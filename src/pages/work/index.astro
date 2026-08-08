@@ -1,0 +1,62 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Container from '@components/ui/Container.astro';
+import Heading from '@components/ui/Heading.astro';
+import Text from '@components/ui/Text.astro';
+import ProjectCard from '@components/ui/ProjectCard.astro';
+
+const projects = await getCollection('projects');
+const sortedProjects = projects
+  .filter((p) => p.data.status !== 'archived')
+  .sort((a, b) => {
+    if (a.data.featured && !b.data.featured) return -1;
+    if (!a.data.featured && b.data.featured) return 1;
+    return a.data.title.localeCompare(b.data.title);
+  });
+
+const screenshotImports = import.meta.glob<{ default: ImageMetadata }>('/src/assets/screenshots/*.jpg', { eager: true });
+
+function getScreenshot(slug: string): ImageMetadata | undefined {
+  const key = `/src/assets/screenshots/${slug}.jpg`;
+  return screenshotImports[key]?.default;
+}
+---
+
+<BaseLayout
+  title="Proyectos"
+  description="Portafolio de sistemas, plataformas digitales e infraestructura desarrollados por LEXICORE LABS SYSTEM."
+>
+  <section class="py-32 pt-48">
+    <Container>
+      <div class="max-w-3xl">
+        <p class="eyebrow mb-4">Selected Work</p>
+        <Heading as="h1" size="1">Proyectos destacados</Heading>
+        <Text variant="lead" class="mt-6">
+          Sistemas reales construidos desde el análisis hasta la puesta en producción. Cada proyecto demuestra una capacidad diferente.
+        </Text>
+      </div>
+
+      <div class="mt-16 grid gap-8 lg:grid-cols-12">
+        {
+          sortedProjects.map((project, index) => {
+            const isLarge = index === 0 || index === 3 || index === 5;
+            const isPriority = index < 2;
+
+            return (
+              <ProjectCard
+                slug={project.data.slug}
+                title={project.data.title}
+                category={project.data.category}
+                description={project.data.description}
+                imageSrc={getScreenshot(project.data.slug)}
+                size={isLarge ? 'large' : 'medium'}
+                priority={isPriority}
+              />
+            );
+          })
+        }
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

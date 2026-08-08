@@ -1,0 +1,66 @@
+---
+import Container from '@components/ui/Container.astro';
+import Heading from '@components/ui/Heading.astro';
+import Text from '@components/ui/Text.astro';
+
+const stack = [
+  {
+    layer: 'Experience',
+    items: ['Astro', 'React', 'Next.js', 'TypeScript'],
+    description: 'Interfaces rápidas, tipadas y optimizadas para conversión.',
+  },
+  {
+    layer: 'Application',
+    items: ['NestJS', 'Laravel', 'PHP', 'REST APIs'],
+    description: 'Servicios robustos, APIs claras y lógica de negocio estructurada.',
+  },
+  {
+    layer: 'Data',
+    items: ['PostgreSQL', 'MySQL', 'SQL Server', 'Prisma'],
+    description: 'Modelado, migraciones y consultas optimizadas.',
+  },
+  {
+    layer: 'Infrastructure',
+    items: ['Docker', 'Linux', 'VPS', 'Coolify', 'Vercel'],
+    description: 'Entornos reproducibles, escalables y seguros.',
+  },
+  {
+    layer: 'Processing',
+    items: ['Redis', 'Workers', 'Queues', 'MinIO'],
+    description: 'Tareas asíncronas, caché y almacenamiento de objetos.',
+  },
+  {
+    layer: 'Delivery',
+    items: ['Git', 'GitHub', 'QA', 'Staging', 'Production', 'Backups', 'Rollback'],
+    description: 'Flujos de entrega controlados y reversibles.',
+  },
+];
+---
+
+<section class="section bg-background-secondary">
+  <Container>
+    <div class="mb-16 max-w-3xl">
+      <p class="eyebrow mb-4">Stack</p>
+      <Heading as="h2" size="2">Tecnología organizada por capas.</Heading>
+      <Text variant="lead" class="mt-6">
+        Separar el stack por responsabilidades nos permite operar cada nivel con claridad, desde la experiencia de usuario hasta la entrega en producción.
+      </Text>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        stack.map((group) => (
+          <div class="rounded-lg border border-border bg-surface p-6 shadow-sm transition-shadow hover:shadow-md">
+            <h3 class="font-display text-lg font-semibold text-text-primary">{group.layer}</h3>
+            <p class="mt-2 text-sm text-text-secondary">{group.description}</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {group.items.map((item) => (
+                <span class="rounded-sm bg-accent-light px-2.5 py-1 text-xs font-medium text-accent-hover">{item}</span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</section>

@@ -1,0 +1,125 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Container from '@components/ui/Container.astro';
+import Heading from '@components/ui/Heading.astro';
+import Text from '@components/ui/Text.astro';
+import Button from '@components/ui/Button.astro';
+import { SITE } from '@data/site';
+---
+
+<BaseLayout
+  title="Contacto"
+  description="¿Tienes un proceso que podríamos transformar en software? Conversemos con LEXICORE LABS SYSTEM."
+>
+  <section class="py-32 pt-48">
+    <Container class="max-w-3xl">
+      <p class="eyebrow mb-4">Contact</p>
+      <Heading as="h1" size="1">Transformemos un proceso en un sistema.</Heading>
+      <Text variant="lead" class="mt-6">
+        Cuéntanos sobre tu proyecto, necesidad o idea. Te responderemos a la brevedad.
+      </Text>
+
+      <form
+        action="/api/contact"
+        method="POST"
+        class="mt-12 space-y-6"
+        aria-label="Formulario de contacto"
+      >
+        <div class="grid gap-6 sm:grid-cols-2">
+          <div>
+            <label for="name" class="block text-sm font-medium text-text-secondary">Nombre</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              autocomplete="name"
+              class="mt-2 block w-full rounded-sm border border-border bg-surface px-4 py-3 text-text-primary placeholder-text-tertiary focus:border-accent focus:outline-none"
+              placeholder="Tu nombre"
+            />
+          </div>
+          <div>
+            <label for="organization" class="block text-sm font-medium text-text-secondary">Empresa / organización</label>
+            <input
+              type="text"
+              id="organization"
+              name="organization"
+              autocomplete="organization"
+              class="mt-2 block w-full rounded-sm border border-border bg-surface px-4 py-3 text-text-primary placeholder-text-tertiary focus:border-accent focus:outline-none"
+              placeholder="Opcional"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-text-secondary">Correo electrónico</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="email"
+            class="mt-2 block w-full rounded-sm border border-border bg-surface px-4 py-3 text-text-primary placeholder-text-tertiary focus:border-accent focus:outline-none"
+            placeholder="tu@email.com"
+          />
+        </div>
+
+        <div>
+          <label for="type" class="block text-sm font-medium text-text-secondary">Tipo de proyecto</label>
+          <select
+            id="type"
+            name="type"
+            required
+            class="mt-2 block w-full rounded-sm border border-border bg-surface px-4 py-3 text-text-primary focus:border-accent focus:outline-none"
+          >
+            <option value="">Selecciona una opción</option>
+            <option value="software">Software a medida</option>
+            <option value="web">Desarrollo web</option>
+            <option value="platform">Plataforma digital</option>
+            <option value="infrastructure">Infraestructura / DevOps</option>
+            <option value="migration">Migración o modernización</option>
+            <option value="other">Otro</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-medium text-text-secondary">Mensaje</label>
+          <textarea
+            id="message"
+            name="message"
+            rows={5}
+            required
+            class="mt-2 block w-full rounded-sm border border-border bg-surface px-4 py-3 text-text-primary placeholder-text-tertiary focus:border-accent focus:outline-none"
+            placeholder="Cuéntanos sobre tu proyecto..."
+          ></textarea>
+        </div>
+
+        <div class="hidden" aria-hidden="true">
+          <label for="website">No completar este campo</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="flex flex-wrap gap-4">
+          <button
+            type="submit"
+            class="inline-flex items-center justify-center rounded-sm bg-deep-blue px-6 py-3 text-sm font-medium text-text-inverted transition-colors hover:bg-deep-blue-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            Conversemos
+          </button>
+          <Button href={SITE.whatsappLink} variant="secondary">WhatsApp</Button>
+        </div>
+      </form>
+
+      <div class="mt-16 grid gap-8 border-t border-border pt-12 sm:grid-cols-2">
+        <div>
+          <h2 class="font-display text-sm font-semibold uppercase tracking-wider text-text-tertiary">Correo</h2>
+          <a href={`mailto:${SITE.email}`} class="mt-2 inline-block text-text-primary hover:text-accent-hover">{SITE.email}</a>
+        </div>
+        <div>
+          <h2 class="font-display text-sm font-semibold uppercase tracking-wider text-text-tertiary">WhatsApp</h2>
+          <a href={SITE.whatsappLink} target="_blank" rel="noopener noreferrer" class="mt-2 inline-block text-text-primary hover:text-accent-hover">{SITE.whatsapp}</a>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

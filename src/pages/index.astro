@@ -1,0 +1,27 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/sections/Hero.astro';
+import SelectedWork from '@components/sections/SelectedWork.astro';
+import PaperlessEngineering from '@components/sections/PaperlessEngineering.astro';
+import CapabilitiesGrid from '@components/sections/CapabilitiesGrid.astro';
+import ArchitectureSection from '@components/sections/ArchitectureSection.astro';
+import StackSection from '@components/sections/StackSection.astro';
+import ProcessPreview from '@components/sections/ProcessPreview.astro';
+import EngineeringLeadership from '@components/sections/EngineeringLeadership.astro';
+import ClosingStatement from '@components/sections/ClosingStatement.astro';
+import FinalCTA from '@components/sections/FinalCTA.astro';
+import { SITE } from '@data/site';
+---
+
+<BaseLayout title={SITE.name} description={SITE.description}>
+  <Hero />
+  <SelectedWork />
+  <PaperlessEngineering />
+  <CapabilitiesGrid />
+  <ArchitectureSection />
+  <StackSection />
+  <ProcessPreview />
+  <EngineeringLeadership />
+  <ClosingStatement />
+  <FinalCTA />
+</BaseLayout>

@@ -1,0 +1,83 @@
+---
+import Container from '@components/ui/Container.astro';
+import Heading from '@components/ui/Heading.astro';
+import Text from '@components/ui/Text.astro';
+
+const layers = [
+  { name: 'CLIENT', tech: 'Astro · React · Next.js · TypeScript' },
+  { name: 'FRONTEND', tech: 'Interfaces responsivas, accesibles, optimizadas' },
+  { name: 'API', tech: 'REST · GraphQL · Webhooks' },
+  { name: 'SERVICES', tech: 'NestJS · Laravel · PHP · Workers' },
+  { name: 'QUEUE', tech: 'Redis · BullMQ · RabbitMQ' },
+  { name: 'WORKERS', tech: 'Procesamiento asíncrono y reportes' },
+  { name: 'DATABASE', tech: 'PostgreSQL · MySQL · SQL Server · Prisma' },
+  { name: 'STORAGE', tech: 'MinIO · S3 · Assets optimizados' },
+  { name: 'INFRASTRUCTURE', tech: 'Docker · Linux · VPS · Coolify · Vercel' },
+];
+
+const technologies = [
+  'Astro', 'TypeScript', 'React', 'Next.js', 'NestJS', 'Laravel', 'PHP',
+  'PostgreSQL', 'MySQL', 'SQL Server', 'Prisma', 'Redis', 'MinIO',
+  'Docker', 'Coolify', 'Vercel', 'Linux', 'Git', 'GitHub'
+];
+---
+
+<section class="section bg-deep-blue text-text-inverted">
+  <Container>
+    <div class="mb-16 max-w-3xl">
+      <p class="eyebrow mb-4 text-accent-cyan">Architecture</p>
+      <Heading as="h2" size="2" class="text-text-inverted">
+        Una interfaz bonita es solamente una capa.
+      </Heading>
+      <Text variant="lead" class="mt-6 text-slate-300">
+        Diseñamos la arquitectura completa: desde el cliente hasta la infraestructura. Cada capa conectada, observable y preparada para escalar.
+      </Text>
+    </div>
+
+    <div class="grid gap-12 lg:grid-cols-2">
+      <!-- Architecture stack diagram -->
+      <div class="relative">
+        <div class="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-accent-cyan/30 via-accent/50 to-accent-cyan/30 lg:left-8"></div>
+        <ol class="relative space-y-4">
+          {
+            layers.map((layer, index) => (
+              <li class="relative flex items-start gap-6 pl-16 lg:pl-20">
+                <span class="node-glow absolute left-0 top-1 flex h-12 w-12 items-center justify-center rounded-full border border-accent-cyan/40 bg-deep-blue-secondary text-xs font-mono font-semibold text-accent-cyan lg:h-16 lg:w-16">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <div class="rounded-lg border border-border-inverted bg-deep-blue-secondary/50 p-4 backdrop-blur-sm">
+                  <p class="font-display text-base font-semibold text-text-inverted">{layer.name}</p>
+                  <p class="mt-1 text-sm text-slate-400">{layer.tech}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+
+      <!-- Technology network -->
+      <div class="rounded-xl border border-border-inverted bg-deep-blue-secondary/30 p-8">
+        <h3 class="font-display text-lg font-semibold text-text-inverted">Tecnologías conectadas</h3>
+        <p class="mt-2 text-sm text-slate-400">
+          No mostramos una pared de logos. Mostramos cómo cada tecnología ocupa un lugar dentro del sistema.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          {
+            technologies.map((tech) => (
+              <span class="rounded-full border border-border-inverted bg-deep-blue px-4 py-2 text-sm font-medium text-slate-300 transition-colors hover:border-accent-cyan hover:text-accent-cyan">
+                {tech}
+              </span>
+            ))
+          }
+        </div>
+
+        <div class="mt-10 rounded-lg border border-border-inverted bg-deep-blue p-6">
+          <p class="font-mono text-xs uppercase tracking-wider text-accent-cyan">Principio</p>
+          <p class="mt-2 text-text-inverted">
+            Seleccionamos tecnología según el problema. No impulsamos stacks por moda. Cada decisión busca mantenibilidad, rendimiento y seguridad.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

@@ -1,0 +1,116 @@
+---
+import Container from '@components/ui/Container.astro';
+import { SITE, NAVIGATION } from '@data/site';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 right-0 z-40 border-b border-border bg-background/90 backdrop-blur-sm">
+  <Container class="flex h-16 items-center justify-between">
+    <a
+      href="/"
+      class="flex items-center gap-3 font-display text-lg font-semibold tracking-tight text-text-primary focus:outline-none"
+      aria-label={`Inicio · ${SITE.name}`}
+    >
+      <img src="/logo.svg" alt="" width="72" height="90" class="h-9 w-auto" aria-hidden="true" />
+      <span class="hidden sm:inline">{SITE.shortName}<span class="text-text-tertiary font-normal"> Labs System</span></span>
+    </a>
+
+    <nav aria-label="Principal" class="hidden md:flex md:items-center md:gap-8">
+      {
+        NAVIGATION.map((item) => {
+          const isActive = currentPath.startsWith(item.href);
+          return (
+            <a
+              href={item.href}
+              class={`text-sm transition-colors focus:outline-none ${
+                isActive ? 'text-text-primary font-medium' : 'text-text-secondary hover:text-text-primary'
+              }`}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <a
+      href="/contact"
+      class="hidden md:inline-flex items-center justify-center rounded-sm bg-deep-blue px-4 py-2 text-sm font-medium text-text-inverted transition-colors hover:bg-deep-blue-secondary"
+    >
+      Conversemos
+    </a>
+
+    <div class="md:hidden">
+      <input type="checkbox" id="mobile-menu-toggle" class="peer sr-only" aria-label="Abrir o cerrar menú" />
+      <label
+        for="mobile-menu-toggle"
+        class="inline-flex cursor-pointer items-center justify-center p-2 text-text-primary peer-focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-accent"
+      >
+        <svg
+          class="block peer-checked:hidden"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+        <svg
+          class="hidden peer-checked:block"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </label>
+
+      <nav
+        id="mobile-menu"
+        aria-label="Móvil"
+        class="absolute left-0 right-0 top-16 hidden border-b border-border bg-background px-6 py-6 shadow-lg peer-checked:block"
+      >
+        <ul class="space-y-4">
+          {
+            NAVIGATION.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="block text-lg text-text-secondary transition-colors hover:text-text-primary"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+          <li class="pt-4">
+            <a
+              href="/contact"
+              class="inline-flex items-center justify-center rounded-sm bg-deep-blue px-5 py-3 text-sm font-medium text-text-inverted"
+            >
+              Conversemos
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </Container>
+</header>

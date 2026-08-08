@@ -1,0 +1,260 @@
+@import "tailwindcss";
+
+@theme {
+  /* Core palette: ~70% light, ~20% deep blue, ~10% accents */
+  --color-background: #ffffff;
+  --color-background-secondary: #f6f7f9;
+  --color-background-tertiary: #eef0f4;
+  --color-surface: #ffffff;
+  --color-surface-secondary: #f1f3f6;
+
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-tertiary: #64748b;
+  --color-text-inverted: #f8fafc;
+
+  --color-accent: #0ea5e9;
+  --color-accent-hover: #0284c7;
+  --color-accent-light: #e0f2fe;
+  --color-accent-cyan: #06b6d4;
+  --color-accent-green: #10b981;
+
+  --color-deep-blue: #0f172a;
+  --color-deep-blue-secondary: #1e293b;
+  --color-electric-blue: #2563eb;
+  --color-electric-blue-light: #dbeafe;
+
+  --color-border: rgba(15, 23, 42, 0.08);
+  --color-border-strong: rgba(15, 23, 42, 0.16);
+  --color-border-inverted: rgba(248, 250, 252, 0.12);
+
+  /* Typography tokens */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+
+  /* Spacing scale aligned to 4px base */
+  --spacing-px: 1px;
+  --spacing-0: 0px;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  --spacing-32: 8rem;
+  --spacing-40: 10rem;
+  --spacing-48: 12rem;
+}
+
+/* Base resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus states */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-text-inverted);
+}
+
+/* Utility patterns */
+.section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-accent-hover);
+  font-weight: 500;
+}
+
+/* Prose styles for MDX content */
+.prose-custom {
+  color: var(--color-text-secondary);
+}
+
+.prose-custom h2 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+}
+
+.prose-custom h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.prose-custom p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.prose-custom ul,
+.prose-custom ol {
+  margin-bottom: 1rem;
+  padding-left: 1.25rem;
+}
+
+.prose-custom ul {
+  list-style-type: disc;
+}
+
+.prose-custom ol {
+  list-style-type: decimal;
+}
+
+.prose-custom li {
+  margin-bottom: 0.5rem;
+}
+
+.prose-custom a {
+  color: var(--color-accent-hover);
+  text-decoration: none;
+}
+
+.prose-custom a:hover {
+  text-decoration: underline;
+}
+
+.prose-custom strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.prose-custom code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background-color: var(--color-background-tertiary);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+}
+
+.prose-custom pre {
+  background-color: var(--color-deep-blue);
+  color: var(--color-text-inverted);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+.prose-custom pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Paperless flow animation */
+@keyframes flow-pulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.flow-step {
+  animation: flow-pulse 3s ease-in-out infinite;
+}
+
+.flow-step:nth-child(1) { animation-delay: 0s; }
+.flow-step:nth-child(2) { animation-delay: 0.4s; }
+.flow-step:nth-child(3) { animation-delay: 0.8s; }
+.flow-step:nth-child(4) { animation-delay: 1.2s; }
+.flow-step:nth-child(5) { animation-delay: 1.6s; }
+.flow-step:nth-child(6) { animation-delay: 2s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-step {
+    animation: none;
+  }
+}
+
+/* Architecture diagram node pulse */
+@keyframes node-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(14, 165, 233, 0);
+  }
+}
+
+.node-glow {
+  animation: node-glow 2.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .node-glow {
+    animation: none;
+  }
+}

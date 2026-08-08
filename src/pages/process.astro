@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Container from '@components/ui/Container.astro';
+import Heading from '@components/ui/Heading.astro';
+import Text from '@components/ui/Text.astro';
+
+const steps = await getCollection('process');
+const sortedSteps = steps.sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="Proceso"
+  description="Proceso de trabajo de LEXICORE LABS SYSTEM: discovery, arquitectura, diseño, build, harden, test, deploy y operate."
+>
+  <section class="py-32 pt-48">
+    <Container>
+      <div class="max-w-3xl">
+        <p class="eyebrow mb-4">Process</p>
+        <Heading as="h1" size="1">Proceso</Heading>
+        <Text variant="lead" class="mt-6">
+          De una necesidad real a un producto desplegado. Cada fase tiene un propósito claro y entregables concretos.
+        </Text>
+      </div>
+
+      <ol class="mt-16 space-y-0 border-l border-border pl-8 md:pl-12">
+        {
+          sortedSteps.map((step) => (
+            <li class="relative pb-16 last:pb-0">
+              <span class="absolute -left-[2.125rem] top-0 flex h-4 w-4 items-center justify-center rounded-full border border-accent bg-background md:-left-[3.125rem] md:h-5 md:w-5">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent" />
+              </span>
+              <p class="font-mono text-xs uppercase tracking-wider text-accent-hover">
+                Paso {String(step.data.order).padStart(2, '0')}
+              </p>
+              <h2 class="mt-2 font-display text-2xl font-semibold text-text-primary">
+                {step.data.title}
+              </h2>
+              <p class="mt-2 max-w-2xl text-text-secondary">{step.data.description}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </Container>
+  </section>
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+import { cn } from '@lib/utils';
+
+interface Props {
+  as?: 'p' | 'span' | 'div' | 'li';
+  variant?: TextVariant;
+  class?: string;
+}
+
+type TextVariant = 'body' | 'muted' | 'small' | 'lead';
+
+const props: Props = Astro.props;
+const { as: Tag = 'p', variant = 'body', class: className } = props;
+
+const variants: Record<TextVariant, string> = {
+  body: 'text-base leading-relaxed text-text-primary',
+  muted: 'text-base leading-relaxed text-text-secondary',
+  small: 'text-sm leading-relaxed text-text-tertiary',
+  lead: 'text-lg leading-relaxed text-text-secondary md:text-xl',
+};
+---
+
+<Tag class={cn(variants[variant], className)}>
+  <slot />
+</Tag>

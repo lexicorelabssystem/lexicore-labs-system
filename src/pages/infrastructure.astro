@@ -1,0 +1,47 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Container from '@components/ui/Container.astro';
+import Heading from '@components/ui/Heading.astro';
+import Text from '@components/ui/Text.astro';
+
+const layers = [
+  { title: 'Entornos separados', description: 'Desarrollo, QA y producción aislados para reducir riesgos.' },
+  { title: 'Backups', description: 'Estrategias de respaldo y restauración programadas.' },
+  { title: 'SSL / TLS', description: 'Conexiones cifradas para todos los servicios expuestos.' },
+  { title: 'Control de acceso', description: 'Autenticación, autorización y gestión de permisos.' },
+  { title: 'Gestión de secretos', description: 'Variables de entorno y almacenamiento seguro de credenciales.' },
+  { title: 'Observabilidad', description: 'Monitoreo de logs, métricas y salud del sistema.' },
+  { title: 'Workers y colas', description: 'Procesamiento asíncrono de tareas pesadas.' },
+  { title: 'Almacenamiento', description: 'Gestión de archivos, objetos y assets optimizados.' },
+  { title: 'Bases de datos', description: 'PostgreSQL, MySQL y SQL Server según el contexto.' },
+  { title: 'Contenedores', description: 'Docker y orquestación ligera para entornos reproducibles.' },
+];
+---
+
+<BaseLayout
+  title="Infraestructura"
+  description="Infraestructura, DevOps y seguridad en los sistemas de LEXICORE LABS SYSTEM."
+>
+  <section class="py-32 pt-48">
+    <Container>
+      <div class="max-w-3xl">
+        <p class="eyebrow mb-4">Infrastructure</p>
+        <Heading as="h1" size="1">Infraestructura y seguridad</Heading>
+        <Text variant="lead" class="mt-6">
+          Diseñamos, desplegamos y operamos sistemas sobre infraestructura robusta, escalable y segura.
+        </Text>
+      </div>
+
+      <div class="mt-16 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+        {
+          layers.map((layer) => (
+            <div class="bg-surface p-8 transition-colors hover:bg-background-secondary">
+              <h2 class="font-display text-lg font-semibold text-text-primary">{layer.title}</h2>
+              <p class="mt-2 text-sm text-text-secondary">{layer.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

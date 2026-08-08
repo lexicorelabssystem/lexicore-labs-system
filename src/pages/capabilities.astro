@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Container from '@components/ui/Container.astro';
+import Heading from '@components/ui/Heading.astro';
+import Text from '@components/ui/Text.astro';
+
+const capabilities = await getCollection('capabilities');
+const sortedCapabilities = capabilities.sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="Capacidades"
+  description="Capacidades técnicas de LEXICORE LABS SYSTEM: producto, desarrollo, software, backend, datos, infraestructura, DevOps, seguridad, automatización y SEO técnico."
+>
+  <section class="py-32 pt-48">
+    <Container>
+      <div class="max-w-3xl">
+        <p class="eyebrow mb-4">Capabilities</p>
+        <Heading as="h1" size="1">Capacidades</Heading>
+        <Text variant="lead" class="mt-6">
+          Trabajamos en múltiples capas de un sistema, desde la definición del producto hasta su operación en producción.
+        </Text>
+      </div>
+
+      <div class="mt-16 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+        {
+          sortedCapabilities.map((capability) => (
+            <div class="bg-surface p-8 transition-colors hover:bg-background-secondary">
+              <p class="font-mono text-xs text-text-tertiary">{String(capability.data.order).padStart(2, '0')}</p>
+              <h2 class="mt-3 font-display text-xl font-semibold text-text-primary">
+                {capability.data.title}
+              </h2>
+              <p class="mt-2 text-sm text-text-secondary">{capability.data.shortDescription}</p>
+            </div>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

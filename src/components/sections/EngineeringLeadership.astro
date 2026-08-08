@@ -1,0 +1,62 @@
+---
+import Container from '@components/ui/Container.astro';
+import Heading from '@components/ui/Heading.astro';
+import Text from '@components/ui/Text.astro';
+
+const profiles = [
+  {
+    role: 'CEO & Product Strategy',
+    items: ['Visión de producto', 'Transformación digital', 'Necesidades de negocio', 'Definición de soluciones', 'Estrategia tecnológica'],
+  },
+  {
+    role: 'CTO & Solution Architecture',
+    items: ['Arquitectura de software', 'Selección tecnológica', 'Escalabilidad', 'Integraciones', 'Infraestructura', 'Decisiones técnicas'],
+  },
+  {
+    role: 'Full-Stack Software Engineering',
+    items: ['Frontend', 'Backend', 'APIs', 'Bases de datos', 'Integraciones', 'Desarrollo de producto'],
+  },
+  {
+    role: 'DevOps & Cloud Infrastructure',
+    items: ['Linux', 'Docker', 'VPS', 'Cloud', 'CI/CD', 'Despliegues', 'Ambientes', 'Backups', 'Rollback'],
+  },
+  {
+    role: 'Application Security',
+    items: ['Hardening', 'SSL/TLS', 'Gestión de secretos', 'Control de accesos', 'Seguridad de aplicaciones', 'Continuidad'],
+  },
+  {
+    role: 'Technical SEO & Performance',
+    items: ['SEO técnico', 'Arquitectura web', 'Indexación', 'Metadata', 'Performance', 'Core Web Vitals', 'Semantic HTML'],
+  },
+];
+---
+
+<section class="section bg-background-secondary">
+  <Container>
+    <div class="mb-16 max-w-3xl">
+      <p class="eyebrow mb-4">Engineering & Leadership</p>
+      <Heading as="h2" size="2">Estrategia, arquitectura y ejecución bajo una misma visión tecnológica.</Heading>
+      <Text variant="lead" class="mt-6">
+        Una firma técnica y ejecutiva. No un currículum: una estructura de capacidades que garantiza que cada proyecto tenga dirección, ingeniería y operación.
+      </Text>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        profiles.map((profile) => (
+          <div class="rounded-lg border border-border bg-surface p-6">
+            <h3 class="font-display text-lg font-semibold text-text-primary">{profile.role}</h3>
+            <ul class="mt-4 space-y-2">
+              {profile.items.map((item) => (
+                <li class="flex items-start gap-2 text-sm text-text-secondary">
+                  <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</section>

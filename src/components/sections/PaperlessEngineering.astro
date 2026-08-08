@@ -1,0 +1,52 @@
+---
+import Container from '@components/ui/Container.astro';
+import Heading from '@components/ui/Heading.astro';
+import Text from '@components/ui/Text.astro';
+
+const steps = [
+  { key: 'PAPER', label: 'Papel', desc: 'Proceso físico, manual, administrativo.' },
+  { key: 'DATA', label: 'Datos', desc: 'Captura digital de la información.' },
+  { key: 'RULES', label: 'Reglas', desc: 'Validación y lógica de negocio.' },
+  { key: 'AUTOMATION', label: 'Automatización', desc: 'Ejecución sin intervención manual.' },
+  { key: 'TRACEABILITY', label: 'Trazabilidad', desc: 'Registro completo de cada acción.' },
+  { key: 'ACTION', label: 'Acción', desc: 'Decisiones basadas en información real.' },
+];
+---
+
+<section class="section border-y border-border bg-background-secondary">
+  <Container>
+    <div class="grid gap-16 lg:grid-cols-2 lg:items-start">
+      <div>
+        <p class="eyebrow mb-4">Paperless Engineering</p>
+        <Heading as="h2" size="2">
+          Menos papel.<br />
+          <span class="text-accent-hover">Más sistema.</span>
+        </Heading>
+        <Text variant="lead" class="mt-6">
+          Digitalizar no consiste simplemente en convertir documentos físicos en archivos PDF. Consiste en transformar información en procesos capaces de validar, ejecutar, registrar y generar decisiones.
+        </Text>
+      </div>
+
+      <div class="relative">
+        <div class="flex flex-col gap-4 sm:flex-row sm:flex-wrap lg:flex-col">
+          {
+            steps.map((step, index) => (
+              <div class="flow-step flex items-center gap-4 rounded-lg border border-border bg-surface p-4 shadow-sm" style={`animation-delay: ${index * 0.35}s`}>
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-light font-mono text-sm font-semibold text-accent-hover">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <div>
+                  <p class="font-display text-lg font-semibold text-text-primary">{step.label}</p>
+                  <p class="text-sm text-text-secondary">{step.desc}</p>
+                </div>
+                {index < steps.length - 1 && (
+                  <svg class="hidden h-5 w-5 shrink-0 text-accent lg:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19" /><polyline points="19 12 12 19 5 12" /></svg>
+                )}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

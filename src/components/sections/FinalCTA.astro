@@ -1,0 +1,23 @@
+---
+import Container from '@components/ui/Container.astro';
+import Heading from '@components/ui/Heading.astro';
+import Text from '@components/ui/Text.astro';
+import Button from '@components/ui/Button.astro';
+---
+
+<section class="section bg-deep-blue text-text-inverted">
+  <Container class="text-center">
+    <div class="mx-auto max-w-3xl">
+      <Heading as="h2" size="2" class="text-text-inverted">
+        Transformemos un proceso en un sistema que funcione.
+      </Heading>
+      <Text variant="lead" class="mt-6 text-slate-300">
+        Software, plataformas digitales e infraestructura construidos alrededor de necesidades reales.
+      </Text>
+      <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <Button href="/contact" variant="inverted">Conversemos</Button>
+        <Button href="/work" variant="secondary">Ver proyectos</Button>
+      </div>
+    </div>
+  </Container>
+</section>
