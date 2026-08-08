@@ -31,11 +31,6 @@
       ]
     }
   ],
-  "functions": {
-    "src/pages/**/*.ts": {
-      "runtime": "nodejs20.x"
-    }
-  },
   "github": {
     "silent": true
   }
