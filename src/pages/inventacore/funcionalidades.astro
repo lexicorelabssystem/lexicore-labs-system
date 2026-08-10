@@ -1,0 +1,123 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Container from '@components/ui/Container.astro';
+import Heading from '@components/ui/Heading.astro';
+import Text from '@components/ui/Text.astro';
+import Button from '@components/ui/Button.astro';
+import InventaCoreNav from '@components/inventacore/InventaCoreNav.astro';
+
+const features = [
+  {
+    title: 'Registro estructurado de activos',
+    description: 'Cada bien se carga con campos consistentes: nombre, categoría, ubicación, responsable, estado, valor y fotografía.',
+    icon: 'box',
+  },
+  {
+    title: 'Generación e impresión de etiquetas',
+    description: 'El sistema genera códigos e imprime etiquetas listas para pegar en los activos físicos.',
+    icon: 'tag',
+  },
+  {
+    title: 'Movimientos auditables',
+    description: 'Cada traslado, reasignación o baja queda registrado con usuario, fecha y motivo.',
+    icon: 'arrow-left-right',
+  },
+  {
+    title: 'Búsqueda y filtros avanzados',
+    description: 'Encuentra activos por código, ubicación, responsable, estado o cualquier campo personalizado.',
+    icon: 'search',
+  },
+  {
+    title: 'Reportes exportables',
+    description: 'Genera listados y reportes para auditorías, inventarios físicos o altas y bajas.',
+    icon: 'file-text',
+  },
+  {
+    title: 'Roles y permisos',
+    description: 'Define qué usuarios pueden registrar, mover, editar o consultar activos según su perfil.',
+    icon: 'shield',
+  },
+];
+---
+
+<BaseLayout
+  title="Funcionalidades · InventaCore"
+  description="Descubre las funcionalidades de InventaCore: registro de activos, etiquetas, movimientos auditables, reportes y más."
+>
+  <InventaCoreNav />
+
+  <section class="flex min-h-[calc(100vh-8rem)] items-center border-b border-border bg-background py-24">
+    <Container>
+      <div class="max-w-3xl">
+        <p class="eyebrow mb-4">Funcionalidades</p>
+        <Heading as="h1" size="1">
+          Todo lo que necesitas para gestionar activos
+        </Heading>
+        <Text variant="lead" class="mt-6">
+          InventaCore reúne en un solo sistema las herramientas para registrar, ubicar, mover y auditar tus activos de forma ordenada.
+        </Text>
+      </div>
+    </Container>
+  </section>
+
+  {
+    features.map((feature, index) => (
+      <section class={`flex min-h-screen items-center py-24 ${index % 2 === 0 ? 'bg-background-secondary' : 'bg-background'}`}>
+        <Container>
+          <div class="grid items-center gap-12 lg:grid-cols-2">
+            <div class={index % 2 === 0 ? 'order-1' : 'order-1 lg:order-2'}>
+              <div class="flex h-14 w-14 items-center justify-center rounded-full bg-accent-light text-accent-hover">
+                {feature.icon === 'box' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+                )}
+                {feature.icon === 'tag' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><path d="M7 7h.01"/></svg>
+                )}
+                {feature.icon === 'arrow-left-right' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>
+                )}
+                {feature.icon === 'search' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                )}
+                {feature.icon === 'file-text' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                )}
+                {feature.icon === 'shield' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                )}
+              </div>
+              <Heading as="h2" size="2" class="mt-6">
+                {feature.title}
+              </Heading>
+              <Text variant="lead" class="mt-4">
+                {feature.description}
+              </Text>
+            </div>
+            <div class={`rounded-xl border border-border bg-background p-8 shadow-sm ${index % 2 === 0 ? 'order-2' : 'order-2 lg:order-1'}`}>
+              <div class="aspect-video rounded-lg bg-background-tertiary">
+                <div class="flex h-full items-center justify-center text-text-tertiary">
+                  <span class="font-mono text-sm">Pantalla: {feature.title}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+    ))
+  }
+
+  <section class="flex min-h-[50vh] items-center bg-deep-blue py-24 text-text-inverted">
+    <Container class="text-center">
+      <Heading as="h2" size="2">
+        ¿Quieres ver InventaCore en acción?
+      </Heading>
+      <Text variant="lead" class="mx-auto mt-6 max-w-2xl text-slate-300">
+        Agenda una demo y te mostramos cómo funciona el sistema con datos de ejemplo.
+      </Text>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <Button href="/inventacore/pantallas" variant="inverted">Ver pantallas</Button>
+        <Button href="/contact" variant="secondary">Solicitar demo</Button>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

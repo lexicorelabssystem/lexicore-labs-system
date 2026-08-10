@@ -17,6 +17,7 @@ export const SITE = {
 
 export const NAVIGATION = [
   { href: '/work', label: 'Proyectos' },
+  { href: '/inventacore', label: 'InventaCore' },
   { href: '/capabilities', label: 'Capacidades' },
   { href: '/process', label: 'Proceso' },
   { href: '/infrastructure', label: 'Infraestructura' },

@@ -4,11 +4,12 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import Container from '@components/ui/Container.astro';
 import Heading from '@components/ui/Heading.astro';
 import Text from '@components/ui/Text.astro';
+import Button from '@components/ui/Button.astro';
 import ProjectCard from '@components/ui/ProjectCard.astro';
 
 const projects = await getCollection('projects');
-const sortedProjects = projects
-  .filter((p) => p.data.status !== 'archived')
+const clientProjects = projects
+  .filter((p) => p.data.status !== 'archived' && p.data.slug !== 'inventacore')
   .sort((a, b) => {
     if (a.data.featured && !b.data.featured) return -1;
     if (!a.data.featured && b.data.featured) return 1;
@@ -39,7 +40,7 @@ function getScreenshot(slug: string): ImageMetadata | undefined {
 
       <div class="mt-16 grid gap-8 lg:grid-cols-12">
         {
-          sortedProjects.map((project, index) => {
+          clientProjects.map((project, index) => {
             const isLarge = index === 0 || index === 3 || index === 5;
             const isPriority = index < 2;
 
@@ -56,6 +57,28 @@ function getScreenshot(slug: string): ImageMetadata | undefined {
             );
           })
         }
+      </div>
+    </Container>
+  </section>
+
+  <section class="border-t border-border bg-background-secondary py-24">
+    <Container>
+      <div class="grid items-center gap-12 rounded-xl border border-border bg-background p-8 shadow-sm lg:grid-cols-2 lg:p-12">
+        <div>
+          <p class="eyebrow mb-4">Producto propio</p>
+          <Heading as="h2" size="2">InventaCore</Heading>
+          <Text variant="lead" class="mt-4">
+            Nuestro sistema de inventario y gestión de activos. Lo usamos internamente y lo ofrecemos a organizaciones que necesitan controlar sus bienes de forma auditada.
+          </Text>
+          <div class="mt-8">
+            <Button href="/inventacore">Conocer InventaCore</Button>
+          </div>
+        </div>
+        <div class="rounded-lg bg-background-tertiary">
+          <div class="flex aspect-video items-center justify-center text-text-tertiary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+          </div>
+        </div>
       </div>
     </Container>
   </section>

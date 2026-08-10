@@ -1,0 +1,125 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Container from '@components/ui/Container.astro';
+import Heading from '@components/ui/Heading.astro';
+import Text from '@components/ui/Text.astro';
+import Button from '@components/ui/Button.astro';
+import InventaCoreNav from '@components/inventacore/InventaCoreNav.astro';
+
+const steps = [
+  {
+    title: 'Levantamiento físico',
+    description: 'Recorremos las dependencias identificando cada activo, su ubicación actual y su estado.',
+  },
+  {
+    title: 'Registro digital',
+    description: 'Cargamos los activos en InventaCore con fotografías, descripciones y datos técnicos.',
+  },
+  {
+    title: 'Etiquetado',
+    description: 'Generamos e imprimimos etiquetas con códigos únicos para vincular cada bien con su ficha.',
+  },
+  {
+    title: 'Auditoría continua',
+    description: 'Realizamos controles periódicos y registramos movimientos para mantener la trazabilidad.',
+  },
+];
+---
+
+<BaseLayout
+  title="Nosotros lo usamos · InventaCore"
+  description="Lexicore usa InventaCore para levantar, organizar y auditar inventarios. Conocemos la operación porque también la ejecutamos."
+>
+  <InventaCoreNav />
+
+  <section class="flex min-h-[calc(100vh-8rem)] items-center border-b border-border bg-background py-24">
+    <Container>
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div>
+          <p class="eyebrow mb-4">Caso de uso interno</p>
+          <Heading as="h1" size="1">
+            También hacemos inventarios
+          </Heading>
+          <Text variant="lead" class="mt-6">
+            InventaCore no es solo un producto que vendemos: es la herramienta que usamos en Lexicore para levantar, organizar y auditar activos propios y de nuestros clientes.
+          </Text>
+          <div class="mt-8">
+            <Button href="/contact">Contratar levantamiento de inventario</Button>
+          </div>
+        </div>
+        <div class="rounded-xl border border-border bg-background-secondary p-8 shadow-sm">
+          <p class="font-mono text-xs uppercase tracking-wider text-text-tertiary">Por qué lo construimos</p>
+          <blockquote class="mt-4 text-xl font-display font-medium text-text-primary leading-relaxed">
+            "Necesitábamos un sistema que entendiera tanto el registro digital como la operación física. Por eso creamos InventaCore."
+          </blockquote>
+          <p class="mt-4 text-sm text-text-secondary">— Lexicore Labs System</p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section class="flex min-h-screen items-center bg-background-secondary py-24">
+    <Container>
+      <div class="mb-16 max-w-3xl">
+        <p class="eyebrow mb-4">Proceso</p>
+        <Heading as="h2" size="2">
+          Cómo usamos InventaCore en un levantamiento
+        </Heading>
+      </div>
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {
+          steps.map((step, index) => (
+            <div class="rounded-xl border border-border bg-background p-6 shadow-sm">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-deep-blue text-text-inverted font-display font-bold">
+                {index + 1}
+              </div>
+              <h3 class="mt-6 font-display text-lg font-semibold text-text-primary">{step.title}</h3>
+              <p class="mt-2 text-sm text-text-secondary">{step.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+
+  <section class="flex min-h-screen items-center bg-background py-24">
+    <Container>
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div class="rounded-xl border border-border bg-background-secondary p-8 shadow-sm">
+          <p class="font-mono text-xs uppercase tracking-wider text-text-tertiary">Resultados que hemos logrado</p>
+          <ul class="mt-6 space-y-4 text-text-secondary">
+            <li class="flex items-start gap-3">
+              <span class="mt-1 block h-1.5 w-1.5 rounded-full bg-accent-hover"></span>
+              Activos identificados y ubicados en menos tiempo.
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 block h-1.5 w-1.5 rounded-full bg-accent-hover"></span>
+              Reducción de bienes sin registro o duplicados.
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 block h-1.5 w-1.5 rounded-full bg-accent-hover"></span>
+              Información lista para auditorías y trazabilidad.
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 block h-1.5 w-1.5 rounded-full bg-accent-hover"></span>
+              Equipos que entienden el sistema porque nosotros lo operamos.
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p class="eyebrow mb-4">Servicio</p>
+          <Heading as="h2" size="2">
+            Podemos hacer el inventario por ti
+          </Heading>
+          <Text variant="lead" class="mt-6">
+            Si tu organización necesita levantar su inventario, podemos ejecutar todo el proceso: levantamiento físico, registro digital, etiquetado y entrega de reportes auditables.
+          </Text>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <Button href="/contact">Cotizar levantamiento</Button>
+            <Button href="/inventacore/pantallas" variant="secondary">Ver pantallas</Button>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

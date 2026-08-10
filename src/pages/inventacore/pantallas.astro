@@ -1,0 +1,75 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Container from '@components/ui/Container.astro';
+import Heading from '@components/ui/Heading.astro';
+import Text from '@components/ui/Text.astro';
+import Button from '@components/ui/Button.astro';
+import InventaCoreNav from '@components/inventacore/InventaCoreNav.astro';
+
+const screens = [
+  { title: 'Panel administrativo', description: 'Vista general del inventario con accesos directos y estadísticas clave.' },
+  { title: 'Ficha de activo', description: 'Detalle completo de un activo: datos, ubicación, responsable e historial.' },
+  { title: 'Movimientos', description: 'Registro de traslados, reasignaciones y cambios de estado.' },
+  { title: 'Generación de etiquetas', description: 'Impresión de etiquetas con códigos para activos físicos.' },
+  { title: 'Buscador avanzado', description: 'Filtros por ubicación, responsable, estado y más.' },
+  { title: 'Reportes', description: 'Listados exportables para auditorías e inventarios físicos.' },
+];
+---
+
+<BaseLayout
+  title="Pantallas · InventaCore"
+  description="Galería de pantallas de InventaCore: panel administrativo, fichas de activos, movimientos, etiquetas y reportes."
+>
+  <InventaCoreNav />
+
+  <section class="flex min-h-[calc(100vh-8rem)] items-center border-b border-border bg-background py-24">
+    <Container class="text-center">
+      <p class="eyebrow mb-4">Pantallas</p>
+      <Heading as="h1" size="1">
+        Interfaz pensada para operar
+      </Heading>
+      <Text variant="lead" class="mx-auto mt-6 max-w-3xl">
+        Cada pantalla de InventaCore está diseñada para que el registro y seguimiento de activos sea rápido, claro y sin fricción.
+      </Text>
+    </Container>
+  </section>
+
+  {
+    screens.map((screen, index) => (
+      <section class={`flex min-h-screen items-center py-24 ${index % 2 === 0 ? 'bg-background-secondary' : 'bg-background'}`}>
+        <Container>
+          <div class="grid items-center gap-12 lg:grid-cols-2">
+            <div class={index % 2 === 0 ? 'order-1' : 'order-1 lg:order-2'}>
+              <p class="eyebrow mb-4">Pantalla {index + 1}</p>
+              <Heading as="h2" size="2">
+                {screen.title}
+              </Heading>
+              <Text variant="lead" class="mt-4">
+                {screen.description}
+              </Text>
+            </div>
+            <div class={`rounded-xl border border-border bg-background p-4 shadow-sm ${index % 2 === 0 ? 'order-2' : 'order-2 lg:order-1'}`}>
+              <div class="aspect-[16/10] rounded-lg bg-background-tertiary">
+                <div class="flex h-full flex-col items-center justify-center gap-2 text-text-tertiary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+                  <span class="font-mono text-sm">{screen.title}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+    ))
+  }
+
+  <section class="flex min-h-[50vh] items-center bg-deep-blue py-24 text-text-inverted">
+    <Container class="text-center">
+      <Heading as="h2" size="2">
+        ¿Te interesa implementar InventaCore?
+      </Heading>
+      <div class="mt-8">
+        <Button href="/contact" variant="inverted">Conversemos</Button>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

@@ -1,0 +1,159 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Container from '@components/ui/Container.astro';
+import Heading from '@components/ui/Heading.astro';
+import Text from '@components/ui/Text.astro';
+import Button from '@components/ui/Button.astro';
+import InventaCoreNav from '@components/inventacore/InventaCoreNav.astro';
+---
+
+<BaseLayout
+  title="InventaCore"
+  description="Sistema de inventario y gestión de activos desarrollado por LEXICORE LABS SYSTEM. Conecta procesos digitales con operaciones físicas."
+>
+  <InventaCoreNav />
+
+  <section class="flex min-h-[calc(100vh-8rem)] items-center border-b border-border bg-background py-24">
+    <Container>
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div>
+          <p class="eyebrow mb-4">Software de inventario</p>
+          <Heading as="h1" size="1">
+            Controla tus activos de forma clara y auditada
+          </Heading>
+          <Text variant="lead" class="mt-6">
+            InventaCore es el sistema de inventario de Lexicore. Permite registrar, categorizar y dar seguimiento a activos reales, conectando el registro digital con etiquetas físicas y movimientos auditables.
+          </Text>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <Button href="/inventacore/funcionalidades">Ver funcionalidades</Button>
+            <Button href="/contact" variant="secondary">Solicitar demo</Button>
+          </div>
+        </div>
+        <div class="rounded-xl border border-border bg-background-secondary p-8 shadow-sm">
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-light text-accent-hover">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+              </div>
+              <div>
+                <h3 class="font-display font-semibold text-text-primary">Registro estructurado</h3>
+                <p class="text-sm text-text-secondary">Cada activo queda catalogado con datos consistentes y trazables.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-light text-accent-hover">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M2 12h20"/><circle cx="12" cy="12" r="10"/></svg>
+              </div>
+              <div>
+                <h3 class="font-display font-semibold text-text-primary">Etiquetas físicas</h3>
+                <p class="text-sm text-text-secondary">Generación e impresión de etiquetas para vincular bienes con su ficha digital.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-light text-accent-hover">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-display font-semibold text-text-primary">Trazabilidad completa</h3>
+                <p class="text-sm text-text-secondary">Historial de movimientos, responsables y estados en un solo lugar.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section class="flex min-h-screen items-center bg-background-secondary py-24">
+    <Container>
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div class="order-2 lg:order-1">
+          <p class="eyebrow mb-4">Problema</p>
+          <Heading as="h2" size="2">
+            El inventario manual genera más incertidumbre que control
+          </Heading>
+          <Text variant="lead" class="mt-6">
+            Cuando el registro de activos depende de hojas de cálculo o anotaciones dispersas, aparecen inconsistencias, pérdidas de trazabilidad y dificultades para auditar.
+          </Text>
+          <ul class="mt-8 space-y-4 text-text-secondary">
+            <li class="flex items-start gap-3">
+              <span class="mt-1 block h-1.5 w-1.5 rounded-full bg-accent-hover"></span>
+              Datos duplicados o desactualizados entre áreas.
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 block h-1.5 w-1.5 rounded-full bg-accent-hover"></span>
+              Dificultad para saber dónde está cada activo y quién lo tiene.
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 block h-1.5 w-1.5 rounded-full bg-accent-hover"></span>
+              Falta de respaldo auditado para procesos institucionales.
+            </li>
+          </ul>
+        </div>
+        <div class="order-1 lg:order-2 rounded-xl border border-border bg-background p-8 shadow-sm">
+          <p class="font-mono text-xs uppercase tracking-wider text-text-tertiary">Antes</p>
+          <div class="mt-4 space-y-3 text-sm text-text-secondary">
+            <div class="rounded border border-border bg-background-tertiary p-3">Hoja de cálculo "inventario_final_3.xlsx"</div>
+            <div class="rounded border border-border bg-background-tertiary p-3">Foto del activo guardada en carpeta personal</div>
+            <div class="rounded border border-border bg-background-tertiary p-3">Etiqueta escrita a mano, borrosa o repetida</div>
+            <div class="rounded border border-border bg-background-tertiary p-3">Sin historial de quién movió qué y cuándo</div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section class="flex min-h-screen items-center bg-background py-24">
+    <Container>
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div class="rounded-xl border border-border bg-background-secondary p-8 shadow-sm">
+          <p class="font-mono text-xs uppercase tracking-wider text-text-tertiary">Con InventaCore</p>
+          <div class="mt-4 space-y-3 text-sm text-text-secondary">
+            <div class="flex items-center gap-3 rounded border border-border bg-background p-3">
+              <span class="h-2 w-2 rounded-full bg-accent-green"></span>
+              Ficha única por activo con código y foto
+            </div>
+            <div class="flex items-center gap-3 rounded border border-border bg-background p-3">
+              <span class="h-2 w-2 rounded-full bg-accent-green"></span>
+              Etiqueta generada e impresa desde el sistema
+            </div>
+            <div class="flex items-center gap-3 rounded border border-border bg-background p-3">
+              <span class="h-2 w-2 rounded-full bg-accent-green"></span>
+              Movimientos registrados con usuario y fecha
+            </div>
+            <div class="flex items-center gap-3 rounded border border-border bg-background p-3">
+              <span class="h-2 w-2 rounded-full bg-accent-green"></span>
+              Reportes exportables para auditorías
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="eyebrow mb-4">Solución</p>
+          <Heading as="h2" size="2">
+            Un sistema que une el activo físico con su ficha digital
+          </Heading>
+          <Text variant="lead" class="mt-6">
+            InventaCore centraliza el inventario en una plataforma web donde cada bien tiene un identificador, una ubicación, un responsable y un historial. La operación física se vincula al registro mediante etiquetas impresas desde el mismo sistema.
+          </Text>
+          <div class="mt-8">
+            <Button href="/inventacore/funcionalidades">Explorar funcionalidades</Button>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section class="flex min-h-[60vh] items-center bg-deep-blue py-24 text-text-inverted">
+    <Container class="text-center">
+      <Heading as="h2" size="2">
+        Lexicore también hace inventarios
+      </Heading>
+      <Text variant="lead" class="mx-auto mt-6 max-w-3xl text-slate-300">
+        Usamos InventaCore internamente y en proyectos de clientes para levantar, organizar y auditar activos. Conocemos la operación porque también la ejecutamos.
+      </Text>
+      <div class="mt-8">
+        <Button href="/inventacore/nosotros-lo-usamos" variant="inverted">Ver cómo lo usamos</Button>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>
