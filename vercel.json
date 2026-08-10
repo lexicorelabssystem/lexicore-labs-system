@@ -31,6 +31,11 @@
       ]
     }
   ],
+  "functions": {
+    "src/pages/**/*.ts": {
+      "runtime": "nodejs22.x"
+    }
+  },
   "github": {
     "silent": true
   }
