@@ -87,6 +87,9 @@ const ogImage = image
       })}
     />
 
+    <!-- Metricool: analítica web -->
+    <script is:inline>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"5f267efcadc47e938276f6e361736645"})});</script>
+
     <slot name="head" />
   </head>
   <body class="min-h-screen bg-background text-text-primary antialiased selection:bg-accent selection:text-text-inverted">
